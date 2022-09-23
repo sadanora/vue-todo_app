@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+</head>
+<body>
+  <div id="app">
+    <h1>やることリスト 🐤</h1>
+    <form v-on:submit.prevent="addNewTodo">
+      <input v-model="newTodoText" placeholder="夕食の献立を決める">
+      <button>Todoを追加</button>
+    </form>
+    <ul>
+      <li v-for="(todo, index) in todos">
+        <div v-show="!todo.isActive">
+          <span>{{ todo.title }}</span>
+          <button v-on:click="removeTodo(index)">削除</button>
+          <button v-on:click="todo.isActive = !todo.isActive">編集</button>
+        </div>
+        <form v-show="todo.isActive" v-on:submit.prevent="updateTodo(index, todo)">
+          <input type="text" v-bind:value="todo.title" v-bind:ref="todo.id">
+          <button type="submit">保存</button>
+          <button type="button" v-on:click="todo.isActive = !todo.isActive">キャンセル</button>
+        </form>
+      </li>
+    </ul>
+    <pre>{{ $data }}</pre>
+  </div>
+  <script src="https://unpkg.com/vue@2.7.10"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
