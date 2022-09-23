@@ -23,7 +23,7 @@ new Vue({
       localStorage.setItem("nextTodoIdStrings", JSON.stringify(this.nextTodoId))
     },
     removeTodo: function(index) {
-      if (confirm('remove this task?')){
+      if (confirm('このTodoを削除しますか?')){
         this.todos.splice(index, 1)
         localStorage.setItem("todosStrings", JSON.stringify(this.todos))
       }
