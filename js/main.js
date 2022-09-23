@@ -3,23 +3,12 @@ new Vue({
   data: {
     newTodoText: '',
     todos: [
-      {
-        id: 1,
-        title: '植物の水を替える',
-        isActive: false
-      },
-      {
-        id: 2,
-        title: '手紙を書く',
-        isActive: false
-      },
-      {
-        id: 3,
-        title: '住民税を払う',
-        isActive: false
-      }
     ],
-    nextTodoId: 4,
+    nextTodoId: 1,
+  },
+  mounted: function() {
+    this.todos = JSON.parse(localStorage.getItem("todosStrings"))
+    this.nextTodoId = JSON.parse(localStorage.getItem("nextTodoIdStrings"))
   },
   methods: {
     addNewTodo: function() {
@@ -30,14 +19,18 @@ new Vue({
         isActive: false
       })
       this.newTodoText = ''
+      localStorage.setItem("todosStrings", JSON.stringify(this.todos))
+      localStorage.setItem("nextTodoIdStrings", JSON.stringify(this.nextTodoId))
     },
     removeTodo: function(index) {
       if (confirm('remove this task?')){
         this.todos.splice(index, 1)
+        localStorage.setItem("todosStrings", JSON.stringify(this.todos))
       }
     },
     updateTodo: function(index, todo) {
       todo.title = this.$refs[todo.id][0].value
+      localStorage.setItem("todosStrings", JSON.stringify(this.todos))
       todo.isActive = !todo.isActive
     }
   }
