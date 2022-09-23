@@ -19,14 +19,14 @@
           <button v-on:click="removeTodo(index)">削除</button>
           <button v-on:click="todo.isActive = !todo.isActive">編集</button>
         </div>
-        <form v-show="todo.isActive" v-on:submit.prevent="updateTodo(index, todo)">
+        <form v-show="todo.isActive" v-on:submit.prevent="updateTodo(todo)">
           <input type="text" v-bind:value="todo.title" v-bind:ref="todo.id">
           <button type="submit">保存</button>
           <button type="button" v-on:click="todo.isActive = !todo.isActive">キャンセル</button>
         </form>
       </li>
     </ul>
-    <form v-if="(todos.length > 1)"  v-on:submit="removeAllTodo()">
+    <form v-if="(todos.length > 1)" v-on:submit="removeAllTodo()">
       <button>すべてのTodoを削除</button>
     </form>
     <pre>{{ $data }}</pre>

@@ -23,7 +23,7 @@ new Vue({
       localStorage.setItem("todosStrings", JSON.stringify(this.todos))
       localStorage.setItem("nextTodoIdStrings", JSON.stringify(this.nextTodoId))
     },
-    updateTodo: function(index, todo) {
+    updateTodo: function(todo) {
       todo.title = this.$refs[todo.id][0].value
       localStorage.setItem("todosStrings", JSON.stringify(this.todos))
       todo.isActive = !todo.isActive
