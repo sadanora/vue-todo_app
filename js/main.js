@@ -2,13 +2,14 @@ new Vue({
   el: '#app',
   data: {
     newTodoText: '',
-    todos: [
-    ],
+    todos: [],
     nextTodoId: 1,
   },
   mounted: function() {
-    this.todos = JSON.parse(localStorage.getItem("todosStrings"))
-    this.nextTodoId = JSON.parse(localStorage.getItem("nextTodoIdStrings"))
+    if (localStorage.getItem("todosStrings")) {
+      this.todos = JSON.parse(localStorage.getItem("todosStrings"))
+      this.nextTodoId = JSON.parse(localStorage.getItem("nextTodoIdStrings"))
+    }
   },
   methods: {
     addNewTodo: function() {
