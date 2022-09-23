@@ -6,7 +6,7 @@ new Vue({
     nextTodoId: 1,
   },
   mounted: function() {
-    if (localStorage.getItem("todosStrings")) {
+    if (localStorage.hasOwnProperty("todosStrings")) {
       this.todos = JSON.parse(localStorage.getItem("todosStrings"))
       this.nextTodoId = JSON.parse(localStorage.getItem("nextTodoIdStrings"))
     }
