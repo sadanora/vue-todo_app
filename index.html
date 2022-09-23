@@ -26,6 +26,9 @@
         </form>
       </li>
     </ul>
+    <form v-if="(todos.length > 1)"  v-on:submit="removeAllTodo()">
+      <button>すべてのTodoを削除</button>
+    </form>
     <pre>{{ $data }}</pre>
   </div>
   <script src="https://unpkg.com/vue@2.7.10"></script>

@@ -23,16 +23,22 @@ new Vue({
       localStorage.setItem("todosStrings", JSON.stringify(this.todos))
       localStorage.setItem("nextTodoIdStrings", JSON.stringify(this.nextTodoId))
     },
-    removeTodo: function(index) {
-      if (confirm('このTodoを削除しますか?')){
-        this.todos.splice(index, 1)
-        localStorage.setItem("todosStrings", JSON.stringify(this.todos))
-      }
-    },
     updateTodo: function(index, todo) {
       todo.title = this.$refs[todo.id][0].value
       localStorage.setItem("todosStrings", JSON.stringify(this.todos))
       todo.isActive = !todo.isActive
+    },
+    removeTodo: function(index) {
+      if (confirm('このTodoを削除しますか?')) {
+        this.todos.splice(index, 1)
+        localStorage.setItem("todosStrings", JSON.stringify(this.todos))
+      }
+    },
+    removeAllTodo: function() {
+      if (confirm('すべてのTodoを削除しますか?')) {
+        localStorage.removeItem("todosStrings")
+        localStorage.removeItem("nextTodoIdStrings")
+      }
     }
   }
 })
