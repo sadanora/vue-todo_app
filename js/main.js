@@ -17,7 +17,7 @@ new Vue({
       this.todos.push({
         id: this.nextTodoId++,
         title: this.newTodoText,
-        isActive: false
+        isEditing: false
       })
       this.newTodoText = ''
       localStorage.setItem("todosStrings", JSON.stringify(this.todos))
@@ -26,7 +26,7 @@ new Vue({
     updateTodo: function(todo) {
       todo.title = this.$refs[todo.id][0].value
       localStorage.setItem("todosStrings", JSON.stringify(this.todos))
-      todo.isActive = !todo.isActive
+      todo.isEditing = !todo.isEditing
     },
     removeTodo: function(index) {
       if (confirm('このTodoを削除しますか?')) {

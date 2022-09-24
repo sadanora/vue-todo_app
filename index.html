@@ -14,15 +14,15 @@
     </form>
     <ul>
       <li v-for="(todo, index) in todos">
-        <div v-show="!todo.isActive">
+        <div v-show="!todo.isEditing">
           <span>{{ todo.title }}</span>
           <button v-on:click="removeTodo(index)">削除</button>
-          <button v-on:click="todo.isActive = !todo.isActive">編集</button>
+          <button v-on:click="todo.isEditing = !todo.isEditing">編集</button>
         </div>
-        <form v-show="todo.isActive" v-on:submit.prevent="updateTodo(todo)">
+        <form v-show="todo.isEditing" v-on:submit.prevent="updateTodo(todo)">
           <input type="text" v-bind:value="todo.title" v-bind:ref="todo.id">
           <button type="submit">保存</button>
-          <button type="button" v-on:click="todo.isActive = !todo.isActive">キャンセル</button>
+          <button type="button" v-on:click="todo.isEditing = !todo.isEditing">キャンセル</button>
         </form>
       </li>
     </ul>
