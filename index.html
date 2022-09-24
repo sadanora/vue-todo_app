@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo App</title>
+  <title>Todoリスト🐤</title>
 </head>
 <body>
   <div id="app">
-    <h1>Todoリスト 🐤</h1>
+    <h1>Todoリスト🐤</h1>
     <form v-on:submit.prevent="addNewTodo">
       <input v-model="newTodoText" placeholder="夕食の献立を決める">
       <button>Todoを追加</button>
@@ -26,10 +26,9 @@
         </form>
       </li>
     </ul>
-    <form v-if="(todos.length > 1)" v-on:submit="removeAllTodo()">
+    <form v-if="(todos.length > 1)" v-on:submit="removeAllTodo">
       <button>すべてのTodoを削除</button>
     </form>
-    <pre>{{ $data }}</pre>
   </div>
   <script src="https://unpkg.com/vue@2.7.10"></script>
   <script src="js/main.js"></script>
