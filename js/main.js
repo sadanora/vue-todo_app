@@ -1,3 +1,5 @@
+const KEY = "todosStrings"
+
 new Vue({
   el: '#app',
   data: {
@@ -6,8 +8,8 @@ new Vue({
     nextTodoId: 1,
   },
   mounted: function() {
-    if (localStorage.hasOwnProperty("todosStrings")) {
-      this.todos = JSON.parse(localStorage.getItem("todosStrings"))
+    if (localStorage.hasOwnProperty(KEY)) {
+      this.todos = JSON.parse(localStorage.getItem(KEY))
       this.nextTodoId = JSON.parse(localStorage.getItem("nextTodoIdStrings"))
     }
   },
@@ -20,27 +22,27 @@ new Vue({
         isEditing: false
       })
       this.newTodoText = ''
-      localStorage.setItem("todosStrings", JSON.stringify(this.todos))
+      localStorage.setItem(KEY, JSON.stringify(this.todos))
       localStorage.setItem("nextTodoIdStrings", JSON.stringify(this.nextTodoId))
     },
     updateTodo: function(todo) {
       todo.title = this.$refs[todo.id][0].value
       todo.isEditing = false
-      localStorage.setItem("todosStrings", JSON.stringify(this.todos))
+      localStorage.setItem(KEY, JSON.stringify(this.todos))
     },
     switchIsEditing: function(todo) {
       todo.isEditing = !todo.isEditing
-      localStorage.setItem("todosStrings", JSON.stringify(this.todos))
+      localStorage.setItem(KEY, JSON.stringify(this.todos))
     },
     removeTodo: function(index) {
       if (confirm('このTodoを削除しますか?')) {
         this.todos.splice(index, 1)
-        localStorage.setItem("todosStrings", JSON.stringify(this.todos))
+        localStorage.setItem(KEY, JSON.stringify(this.todos))
       }
     },
     removeAllTodo: function() {
       if (confirm('すべてのTodoを削除しますか?')) {
-        localStorage.removeItem("todosStrings")
+        localStorage.removeItem(KEY)
         localStorage.removeItem("nextTodoIdStrings")
       }
     }
