@@ -1,4 +1,4 @@
-const KEY = "todosStrings"
+const KEY = "todos"
 
 new Vue({
   el: '#app',
