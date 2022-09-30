@@ -11,7 +11,7 @@ new Vue({
   mounted: function() {
     if (localStorage.hasOwnProperty(TODOS_KEY)) {
       this.todos = JSON.parse(localStorage.getItem(TODOS_KEY))
-      this.nextTodoId = JSON.parse(localStorage.getItem(NEXT_TODO_ID_KEY))
+      this.nextTodoId = localStorage.getItem(NEXT_TODO_ID_KEY)
     }
   },
   methods: {
@@ -24,7 +24,7 @@ new Vue({
       })
       this.newTodoText = ''
       localStorage.setItem(TODOS_KEY, JSON.stringify(this.todos))
-      localStorage.setItem(NEXT_TODO_ID_KEY, JSON.stringify(this.nextTodoId))
+      localStorage.setItem(NEXT_TODO_ID_KEY, this.nextTodoId)
     },
     updateTodo: function(todo) {
       todo.title = this.$refs[todo.id][0].value
