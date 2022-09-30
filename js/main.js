@@ -25,7 +25,7 @@ new Vue({
     },
     updateTodo: function(todo) {
       todo.title = this.$refs[todo.id][0].value
-      todo.isEditing = !todo.isEditing
+      todo.isEditing = false
       localStorage.setItem("todosStrings", JSON.stringify(this.todos))
     },
     switchIsEditing: function(todo) {
