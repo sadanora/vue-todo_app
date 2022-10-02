@@ -20,7 +20,7 @@
           <button v-on:click="switchIsEditing(todo)">編集</button>
         </div>
         <form v-show="todo.isEditing" v-on:submit.prevent="updateTodo(todo)">
-          <input type="text" v-bind:value="todo.title" v-bind:ref="todo.id">
+          <input type="text" id="editedTitle" v-bind:value="todo.title">
           <button type="submit">保存</button>
           <button type="button" v-on:click="switchIsEditing(todo)">キャンセル</button>
         </form>

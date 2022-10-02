@@ -27,7 +27,7 @@ new Vue({
       localStorage.setItem(NEXT_TODO_ID_KEY, this.nextTodoId)
     },
     updateTodo: function(todo) {
-      todo.title = this.$refs[todo.id][0].value
+      todo.title = document.getElementById("editedTitle").value
       todo.isEditing = false
       localStorage.setItem(TODOS_KEY, JSON.stringify(this.todos))
     },
