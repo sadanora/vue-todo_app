@@ -17,12 +17,12 @@
         <div v-show="!todo.isEditing">
           <span>{{ todo.title }}</span>
           <button v-on:click="removeTodo(index)">削除</button>
-          <button v-on:click="switchIsEditing(todo)">編集</button>
+          <button v-on:click="startEditing(todo)">編集</button>
         </div>
         <form v-show="todo.isEditing" v-on:submit.prevent="updateTodo(todo)">
-          <input type="text" id="editedTitle" v-bind:value="todo.title">
+          <input type="text" v-model:value="todo.editingText">
           <button type="submit">保存</button>
-          <button type="button" v-on:click="switchIsEditing(todo)">キャンセル</button>
+          <button type="button" v-on:click="cancelEditing(todo)">キャンセル</button>
         </form>
       </li>
     </ul>

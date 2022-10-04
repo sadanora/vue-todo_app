@@ -26,13 +26,18 @@ new Vue({
       localStorage.setItem(TODOS_KEY, JSON.stringify(this.todos))
       localStorage.setItem(NEXT_TODO_ID_KEY, this.nextTodoId)
     },
-    updateTodo: function(todo) {
-      todo.title = document.getElementById("editedTitle").value
-      todo.isEditing = false
-      localStorage.setItem(TODOS_KEY, JSON.stringify(this.todos))
+    startEditing: function(todo) {
+      todo.isEditing = true
+      todo.editingText = todo.title
     },
-    switchIsEditing: function(todo) {
-      todo.isEditing = !todo.isEditing
+    cancelEditing: function(todo) {
+      todo.isEditing = false
+      delete(todo.editingText)
+    },
+    updateTodo: function(todo) {
+      todo.title = todo.editingText
+      todo.isEditing = false
+      delete(todo.editingText)
       localStorage.setItem(TODOS_KEY, JSON.stringify(this.todos))
     },
     removeTodo: function(index) {
